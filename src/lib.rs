@@ -36,8 +36,6 @@
 //! }
 //! ```
 
-use proc_macro_hack::proc_macro_hack;
-
 /// Converts a sequence of arbitrary literal values into a single byte array at the compile time.
 ///
 /// List of supported literals:
@@ -75,7 +73,6 @@ use proc_macro_hack::proc_macro_hack;
 ///     ][..]);
 /// }
 /// ```
-#[proc_macro_hack]
 pub use bytify_impl::bytify;
 
 /// The same macro as [`bytify`] but returns a slice, instead of array.

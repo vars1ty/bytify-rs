@@ -1,11 +1,10 @@
 extern crate proc_macro;
 
-use std::io::{Error as IOError};
+use std::io::Error as IOError;
 use byteorder::{ByteOrder, WriteBytesExt, BE, LE};
 use failure::Fail;
 use quote::{ToTokens, quote};
 use proc_macro::TokenStream;
-use proc_macro_hack::proc_macro_hack;
 use syn::{parse_macro_input, Error as SynError, Expr, IntSuffix, FloatSuffix, Lit, LitInt, LitFloat, Token, UnOp};
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
@@ -354,7 +353,7 @@ fn bytify_implementation(input: MyMacroInput) -> Result<TokenStream, Error> {
     }.into())
 }
 
-#[proc_macro_hack]
+#[proc_macro]
 pub fn bytify(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as MyMacroInput);
     bytify_implementation(input).unwrap_or_else(|err| panic!("{}", err))
